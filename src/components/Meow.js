@@ -1,18 +1,24 @@
 import React from "react";
-import Username from "./Username";
+import meows from "../meows.json";
+import Hashtag from "./Hashtag";
 import Icon from "./Icon";
+import Profile from "./Profile";
 
 const Meow = ({ user, text, hashtags, replies, likes }) => (
   <div className="Meow">
     <div className="top-section">
-      <Username />
+      <Profile photo={user.photo} displayName={user.displayName} userName={user.username}/>
     </div>
     <div className="mid-section">
-      <p></p>
-      <div className="hashtags"></div>
+      <p>{text}</p>
+       {hashtags.map((hashtag) => (
+         <Hashtag>{hashtag}</Hashtag>
+         ))}
     </div>
-    <div className="bottom-section"></div>
-  </div>
-);
-
+     <div className="bottom-section">
+     <Icon type="replies"  number={replies} />
+     <Icon type="likes" number={likes}/>
+     </div>
+     </div>
+)
 export default Meow;
